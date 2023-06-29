@@ -1,42 +1,200 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@font-face {
+  font-family: 'Agelast';
+  src: url("Agelast-mLlAm.otf");
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+body{
+  background: #000;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#text-title{
+  font-family:Agelast;
+  font-size: xx-large;
+
+  position: absolute;
+  color:  rgb(253, 253, 253);
+  /* background:   rgb(8, 79, 126); */
+  margin-left: -380px;
+  margin-top: -80px;
+
+  padding-left: 300px;
+  padding-right: 300px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  /* border: 2px solid  rgb(49, 166, 245); */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+#text-typical-import{
+  position:absolute;
+  font-family:Agelast;
+  color:  rgb(253, 253, 253);
+  
+  margin-left: 30px;
+  margin-top: 20px;
+
+  padding: 10px;
+  
 }
 
-.card {
-  padding: 2em;
+#text-typical-create{
+  position:absolute;
+  font-family:Agelast;
+  color:  rgb(253, 253, 253);
+  
+  margin-left: 450px;
+  margin-top: 20px;
+
+  padding: 10px;
+  
 }
 
-.read-the-docs {
-  color: #888;
+.base-inner-create-button-highlight{
+
+  position: absolute;
+  font-family:Agelast;
+  color: white;
+  border: 1px solid rgb(50, 160, 245);
+  background:rgb(76, 168, 235);
+
+  margin-left: -600px;
+  margin-right: 100px;
+
+  padding: 20px;
+
+
+  align-content: center;
+}
+
+.base-inner-create-button{
+
+  position: absolute;
+  font-family:Agelast;
+  color: white;
+  border: 1px solid rgb(50, 160, 245);
+  background:rgb(29, 29, 29);
+
+
+  margin-left: -600px;
+  margin-right: 100px;
+
+  padding: 20px;
+
+
+  align-content: center;
+}
+
+.base-inner-create-button:hover{
+
+  cursor: pointer;
+  position: absolute;
+  font-family:Agelast;
+  color: white;
+  border: 1px solid rgb(50, 160, 245);
+  background:rgb(50, 160, 245);
+
+
+  margin-left: -600px;
+  margin-right: 100px;
+
+  padding: 20px;
+
+
+  align-content: center;
+}
+
+.base-inner-import-button{
+
+  position: absolute;
+  font-family:Agelast;
+  color: white;
+  border: 1px solid rgb(50, 160, 245);
+  background:rgb(29, 29, 29);
+
+  margin-left: -300px;
+  margin-right: 100px;
+
+  padding: 20px;
+
+
+  align-content: center;
+}
+
+.base-inner-import-button:hover{
+
+  cursor: pointer;
+  position: absolute;
+  font-family:Agelast;
+  color: white;
+  border: 1px solid rgb(50, 160, 245);
+  background: rgb(50, 160, 245);
+
+  margin-left: -300px;
+  margin-right: 100px;
+
+  padding: 20px;
+
+
+  align-content: center;
+}
+
+#base-inner-partition{
+  position: absolute;
+
+  margin-top: 80px;
+  margin-left: -600px;
+  border: 1px solid rgb(50, 160, 245);
+
+
+  padding-left: 1260px;
+  height: 0px;
+}
+
+.Base{
+  border: 1px solid rgb(49, 166, 245);
+  border-radius: 0px;
+
+
+  margin: auto;
+  margin-top: 2%;
+  width: 50%;
+  padding-top: 100px;
+  padding-bottom: 530px;
+  padding-left: 650px;
+
+  background: #000;
+}
+
+.newbutton {
+  position: absolute;
+  
+
+  margin-top: 200px;
+  margin-left: 100px;
+
+  width: 100px;
+}
+
+#list{
+  background: #000;
+}
+
+#option{
+  color: aqua;
+}
+
+.table-button{
+  border-radius: 0%;
+  padding: 10px;
+
+  background:rgb(49, 166, 245);
+  border: solid rgb(29, 29, 29);
+
+  width: 140px;
+
+  font-size: 15px;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
