@@ -239,8 +239,8 @@ body{
 .table{
 
   position: absolute;
-  margin-top: 260px;
-  margin-left: 105px ;
+  margin-top: 190px;
+  margin-left: 109px ;
 
   font-family:Arial, Helvetica, sans-serif;
 
@@ -295,4 +295,66 @@ body{
   font-size: 15px;
 
   border: solid rgb(49, 166, 245);
+}
+
+.remove-column{
+
+  margin-left: 5px;
+
+  position: relative;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  width: 35px;
+  background: rgb(22, 22, 22);
+  font-size: 16px;
+
+  border: solid rgb(245, 49, 65);
+
+}
+
+.remove-column:hover{
+
+  margin-left: 5px;
+
+  position: relative;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  width: 35px;
+  background: rgb(245, 49, 65);
+  font-size: 16px;
+
+  border: solid rgb(245, 49, 65);
+
+}
+
+.remove-row{
+  margin-left: 5px;
+  margin-top: 5px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  width: 35px;
+  background: rgb(22, 22, 22);
+  font-size: 15px;
+
+  border: solid rgb(245, 49, 65);
+}
+
+.remove-row:hover{
+  margin-left: 5px;
+  margin-top: 5px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  width: 35px;
+  background: rgb(245, 49, 65);
+  font-size: 15px;
+
+  border: solid rgb(245, 49, 65);
 }

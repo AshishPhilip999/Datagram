@@ -4,56 +4,113 @@ import './App.css'
 
 function App() {
 
-  const [count , setCount] = useState(2);
-  const [buttonlist , setButtons] = useState([]);
+  const [count , setCount] = useState(1);
 
-  // function onButtonClick(e){
+  const [column , setColumn] = useState([]);
 
-  //   setButtons( buttons =>{
-  //     return (
-  //       [...buttons , { value : ("Button" + count ) , id : crypto.randomUUID() }]
-  //     )
-  //   } )
-  // }
+  const [rows , setRows] = useState([]);
+
+  const [values , setValues] = useState([]);
+
+
+  function onClickAddColumnButton(e){
+
+    if(rows !=  null){
+      rows.map(m => {
+        m.push("val");
+      })
+    }
+
+    setColumn(currColumn => {
+
+      return (
+        [...currColumn , ( "Col" + count )  ]
+      )
+    })
+  }
+
+  function onClickAddRowButton(e){
+
+    setRows( arr => {
+
+      return [...arr , returnArr()  ]
+
+    } )
+  }
+
+  function returnArr(){
+    var newarr = []
+
+    column.map(m => {
+      newarr.push("val");
+    })
+
+    return newarr;
+  }
   
-  
+  function onClickDeleteColumnButton(id){
+
+    if(rows != null){
+      rows.map( m => {
+        m.pop();
+      } )
+    }
+
+    setColumn( currentcol => { return currentcol.filter(cols => cols !== id ) } )
+  }
+
+  function onClickDeleteRowButton(id){
+
+    setRows( currow => { return currow.filter(thisrow => thisrow !== id)} )
+
+  }
+
   return <>
   <div className='newbutton'>
-  <ul id='list'>
-  <button className='table-button' >Button</button>   
+  <ul id='list'>   
   </ul>
   </div>
 
   <div className='table' >
-    <table>
-      <thead>
+    <table>    
+      <thead> 
         <tr>
-          <th id='attributes'>Name</th>
-          <th id='attributes'>ID</th>
-          <th id='attributes'>Age</th>
-          <th id='attributes'>Mobile</th>
-
-          <button className='add-column'>+</button>
+        {column.map(
+          col => {
+            return [
+              <th  key={crypto.randomUUID()} id='attributes'>{col} </th>
+            ]
+          }
+        )}
+        
+         <button className='add-column' onClick={e => {onClickAddColumnButton(e) ; setCount(count+1) } } >+</button>
+         <button className='remove-column' onClick={e => { onClickDeleteColumnButton( column[column.length-1] ) ; setCount( (count <= 1 ? 1  : count-1) ) } }  >-</button>
         </tr>
 
       </thead>
       <tbody>
-           <tr>
-            <td id='row'>Ashish</td>
-            <td id='row'>16826</td>
-            <td id='row'>20</td>
-            <td id='row'>99999999</td>
-           </tr>
+           
+           {rows.map(
+            curow => {
+              return [
+                <tr>
+                  {curow.map(
+                    value =>{
+                      return [
+                        <td key={crypto.randomUUID()} id='row'>{value}</td>
+                      ]
+                    }
+                  )}
+                </tr>
+              ]
+            }
+           )}
 
-           <tr>
-            <td id='row'>Philip</td>
-            <td id='row'>16816</td>
-            <td id='row'>20</td>
-            <td id='row'>9934567</td>
-           </tr>
-           <button className='add-row'>+</button>
+           <button className='add-row' onClick={e => onClickAddRowButton(e)}>+</button>
+           <button className='remove-row' onClick={e => onClickDeleteRowButton( rows[rows.length-1] )} >-</button>
       </tbody>
     </table>
+   
   </div>
   </>
 }
