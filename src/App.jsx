@@ -17,14 +17,14 @@ function App() {
 
     if(rows !=  null){
       rows.map(m => {
-        m.push("val");
+        m.push({id : crypto.randomUUID() , value : "val" , isSelected : false });
       })
     }
 
     setColumn(currColumn => {
 
       return (
-        [...currColumn , ( "Col" + count )  ]
+        [...currColumn , {id : crypto.randomUUID() , value : "col"+count , isSelected : false  }   ]
       )
     })
   }
@@ -42,7 +42,7 @@ function App() {
     var newarr = []
 
     column.map(m => {
-      newarr.push("val");
+      newarr.push( { id : crypto.randomUUID() , value : "val" , isSelected : false} );
     })
 
     return newarr;
@@ -65,6 +65,77 @@ function App() {
 
   }
 
+  function selectColumn(id){
+
+    setColumn(columns => {
+
+      return columns.map( col => {
+          
+        if(col.id === id)
+        {
+          col.isSelected = true;
+        }
+
+        return col;
+      })
+
+    })
+
+  }
+
+  function deSelectColumn(id , updatedvalue){
+
+    setColumn(columns => {
+
+      return columns.map( col => {
+          
+        if(col.id === id)
+        {
+          col.value = updatedvalue;
+          col.isSelected = false;
+        }
+
+        return col;
+      })
+
+    })
+
+  }
+
+  function selectRow(id){
+
+    setRows(allrows => {
+
+      return allrows.map(row => {
+        return row.map(val => {
+          if(val.id === id){
+             val.isSelected = true;
+          }
+
+          return val;
+        })
+      })
+    })
+  }
+
+  function deSelectRow(id , updatedvalue){
+
+    setRows(allrows => {
+
+      return allrows.map(row => {
+        return row.map(val => {
+          if(val.id === id){
+             val.value = updatedvalue;
+             val.isSelected = false;
+          }
+
+          return val;
+        })
+      })
+    })
+
+  }
+
   return <>
   <div className='newbutton'>
   <ul id='list'>   
@@ -78,7 +149,7 @@ function App() {
         {column.map(
           col => {
             return [
-              <th  key={crypto.randomUUID()} id='attributes'>{col} </th>
+              <th  key={col.id} id='attributes' onClick={e => selectColumn(col.id)} >{ (col.isSelected) ? <input className='row-input' type="text" defaultValue={col.value} onBlur={e => {deSelectColumn( col.id , e.target.value)}} /> : col.value } </th>
             ]
           }
         )}
@@ -95,9 +166,9 @@ function App() {
               return [
                 <tr>
                   {curow.map(
-                    value =>{
+                    val =>{
                       return [
-                        <td key={crypto.randomUUID()} id='row'>{value}</td>
+                        <td key={val.id} id='row' onMouseUpCapture={ e => {selectRow(val.id)} }> { (val.isSelected) ? <input className='row-input' type="text" defaultValue={val.value}   onBlur={e => { deSelectRow(val.id , e.target.value ) } }/> : val.value   } </td>
                       ]
                     }
                   )}
@@ -106,10 +177,12 @@ function App() {
             }
            )}
 
-           <button className='add-row' onClick={e => onClickAddRowButton(e)}>+</button>
-           <button className='remove-row' onClick={e => onClickDeleteRowButton( rows[rows.length-1] )} >-</button>
+           
       </tbody>
+      
     </table>
+    <button className='add-row' onClick={e => onClickAddRowButton(e)}>+</button>
+           <button className='remove-row' onClick={e => onClickDeleteRowButton( rows[rows.length-1] )} >-</button>
    
   </div>
   </>

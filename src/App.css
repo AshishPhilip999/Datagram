@@ -238,6 +238,7 @@ body{
 
 .table{
 
+
   position: absolute;
   margin-top: 190px;
   margin-left: 109px ;
@@ -357,4 +358,38 @@ body{
   font-size: 15px;
 
   border: solid rgb(245, 49, 65);
+}
+
+
+
+.row-input{
+
+  position:inherit;
+
+  color: white;
+
+  width: 100px;
+
+  border-radius: 0px;
+
+  background-color: rgb(44, 44, 44);
+
+  border: 1px solid rgb(49, 166, 245);
+  
+}
+
+.row-input::selection{
+
+  position:inherit;
+
+  color: white;
+
+  width: 100px;
+
+  border-radius: 0px;
+
+  background-color: rgb(44, 44, 44);
+
+  border: 1px solid rgb(49, 166, 245);
+  
 }
