@@ -13,7 +13,7 @@ function App() {
   const [values , setValues] = useState([]);
 
 
-  function onClickAddColumnButton(e){
+  function onClickAddColumnButton(e , val = null){
 
     if(rows !=  null){
       rows.map(m => {
@@ -23,26 +23,32 @@ function App() {
 
     setColumn(currColumn => {
 
-      return (
-        [...currColumn , {id : crypto.randomUUID() , value : "col"+count , isSelected : false  }   ]
-      )
+      if(val === null){
+        return (
+          [...currColumn , {id : crypto.randomUUID() , value : "col"+count , isSelected : false  }   ]
+          )  
+      }else{
+        return(
+          [...currColumn , {id : crypto.randomUUID() , value : val , isSelected : false  }   ]
+        )
+      }
+      
     })
   }
 
   function onClickAddRowButton(e){
 
-    setRows( arr => {
-
-      return [...arr , returnArr()  ]
+    setRows( (arr) => {
+        return [...arr , returnArr()  ]
 
     } )
   }
 
-  function returnArr(){
+  function returnArr(val = "hello"){
     var newarr = []
 
-    column.map(m => {
-      newarr.push( { id : crypto.randomUUID() , value : "val" , isSelected : false} );
+    column.map(m => { 
+      newarr.push( { id : crypto.randomUUID() , value : val , isSelected : false} );
     })
 
     return newarr;
@@ -136,7 +142,80 @@ function App() {
 
   }
 
+
+  function importFile(e){
+
+    document.getElementById("read-file").click();
+
+  }
+
+  const [thisrow , setThisRow] = useState([]);
+
+  function value(e){
+
+    const fileInput = document.getElementById("read-file");
+
+
+    const file = fileInput.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function(event) {
+          const fileContent = event.target.result;
+          console.log("File Contents:");
+
+          const content = fileContent.split("\n");
+
+          const columnline = content[0];
+
+          const cols = columnline.split(',');
+
+          cols.map(val => {
+            setColumn(currColumn => {
+              return(
+                [...currColumn , {id : crypto.randomUUID() , value : val , isSelected : false  }   ]
+              )
+            })
+          })
+          
+          content[0] = "";
+          content.map(rows => {
+            if(rows === ""){
+              
+            }else{
+              const row = rows.split(',');
+
+              const newarr = [];
+              row.map(val => {
+
+                newarr.push({ id : crypto.randomUUID() , value : val , isSelected : false});
+              })
+
+              setRows(arr => {
+                return (
+                  [...arr , newarr]
+                )
+              })
+            }
+          })
+
+      };
+
+      reader.readAsText(file); // Read the file as text
+  } else {
+      console.log("No file selected.");
+  }
+
+  }
+
+
+
   return <>
+
+  <button  className='import-button' onClick={(e) => {importFile(e)}} > I M P O R T </button>
+  <input type="file" id='read-file' hidden = 'hidden' onChange={e => { value(e)  } }  />
+
   <div className='newbutton'>
   <ul id='list'>   
   </ul>
