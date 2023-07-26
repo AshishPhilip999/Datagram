@@ -44,7 +44,7 @@ function App() {
     } )
   }
 
-  function returnArr(val = "hello"){
+  function returnArr(val = "value"){
     var newarr = []
 
     column.map(m => { 
@@ -209,12 +209,42 @@ function App() {
 
   }
 
+  function downloadFile (e) {
+    const element = document.createElement('a');
+    let i = 0;
+    
+    let content = "";
 
+    column.map(e => {
+      content += e.value + ",";
+    })
+    content += "\n";
+
+    rows.map(curow => {
+
+      curow.map(e => {
+        content += e.value + ",";
+      })
+      content += "\n";
+    })
+
+
+    const file =  new Blob([content] , 
+      {type: "text/plain;charset=utf-8"}
+
+    );
+
+    element.href = URL.createObjectURL(file);
+    element.download = "DataGram.csv";
+    document.body.appendChild(element);
+    element.click();
+  }
 
   return <>
 
   <button  className='import-button' onClick={(e) => {importFile(e)}} > I M P O R T </button>
   <input type="file" id='read-file' hidden = 'hidden' onChange={e => { value(e)  } }  />
+  <button  className='export-button' id='export' onClick={(e) => {downloadFile(e)}} > E X P O R T </button>
 
   <div className='newbutton'>
   <ul id='list'>   

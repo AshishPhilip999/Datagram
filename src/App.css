@@ -186,6 +186,26 @@ body{
   background:rgb(29, 29, 29);
 }
 
+.export-button{
+
+  position: absolute;
+  font-family:Agelast;
+
+  padding: 10px;
+
+  width: 150px;
+  height: 55px;
+
+  border-radius: 0px;
+
+  margin-top: 102px;
+  margin-left: 1210px;
+
+  color: white;
+  border: 1px solid rgb(50, 160, 245);
+  background:rgb(29, 29, 29);
+}
+
 .import-button:hover{
 
   position: absolute;
@@ -200,6 +220,26 @@ body{
 
   margin-top: 102px;
   margin-left: 350px;
+
+  color: white;
+  border: 1px solid rgb(50, 160, 245);
+  background:rgb(50, 160, 245);
+}
+
+.export-button:hover{
+
+  position: absolute;
+  font-family:Agelast;
+
+  padding: 10px;
+
+  width: 150px;
+  height: 55px;
+
+  border-radius: 0px;
+
+  margin-top: 102px;
+  margin-left: 1210px;
 
   color: white;
   border: 1px solid rgb(50, 160, 245);
