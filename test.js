@@ -1,3 +1,6 @@
-let str = "hel,lo";
 
-console.log(str.split(','));
+var x = 5;
+
+var x = 34235
+
+console.log(x);
